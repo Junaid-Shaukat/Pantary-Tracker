@@ -65,14 +65,14 @@ export default function Home() {
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-between sm:p-24 p-4'>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm '>
-        <h1 className='text-4xl p-4 text-center'>Expense Tracker</h1>
-        <div className='bg-slate-800 p-4 rounded-lg'>
+      <div className='z-10 w-full max-w-5xl items-center justify-between text-sm '>
+        <h1 className='text-4xl font-bold p-4 text-center'>Pantry Tracker</h1>
+        <div className='bg-slate-950 p-4 rounded-lg'>
           <form className='grid grid-cols-6 items-center text-black'>
             <input
               value={newItem.name}
               onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-              className='col-span-3 p-3 border'
+              className='col-span-3 p-3 border rounded-xl'
               type='text'
               placeholder='Enter Item'
             />
@@ -81,13 +81,13 @@ export default function Home() {
               onChange={(e) =>
                 setNewItem({ ...newItem, price: e.target.value })
               }
-              className='col-span-2 p-3 border mx-3'
+              className='col-span-2 p-3 border mx-3 rounded-xl'
               type='number'
-              placeholder='Enter $'
+              placeholder='Enter Quantity'
             />
             <button
               onClick={addItem}
-              className='text-white bg-slate-950 hover:bg-slate-900 p-3 text-xl'
+              className='text-white bg-green-700 hover:bg-green-600 p-3 text-xl rounded-xl'
               type='submit'
             >
               +
@@ -97,15 +97,15 @@ export default function Home() {
             {items.map((item, id) => (
               <li
                 key={id}
-                className='my-4 w-full flex justify-between bg-slate-950'
+                className='my-4 w-full flex justify-between rounded-xl bg-gray-100 text-black'
               >
                 <div className='p-4 w-full flex justify-between'>
                   <span className='capitalize'>{item.name}</span>
-                  <span>${item.price}</span>
+                  <span>{item.price}</span>
                 </div>
                 <button
                   onClick={() => deleteItem(item.id)}
-                  className='ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900 w-16'
+                  className='ml-8 p-4 border-l-2 bg-red-600 border-none text-lg hover:bg-red-500 w-16 rounded-xl'
                 >
                   X
                 </button>
@@ -116,8 +116,8 @@ export default function Home() {
             ''
           ) : (
             <div className='flex justify-between p-3'>
-              <span>Total</span>
-              <span>${total}</span>
+              <span>Total Items</span>
+              <span>{total}</span>
             </div>
           )}
         </div>
